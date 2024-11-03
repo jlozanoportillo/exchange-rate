@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class exchangeRequest {
+public class ExchangeRequest {
   
   private BigDecimal amount;
   
