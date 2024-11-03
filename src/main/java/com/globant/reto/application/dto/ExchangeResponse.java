@@ -21,14 +21,14 @@ public class ExchangeResponse {
   @JsonProperty("convertAmount")
   private BigDecimal convertAmount;
   
-  @JsonProperty("originCurrency")
-  private String originCurrency = "prueba";
+  @JsonProperty("souceCurrency")
+  private String souceCurrency;
 
   @JsonProperty("targetCurrency")
   private String targetCurrency;
   
   @JsonProperty("exchangeRate")
-  private String exchangeRate;
+  private BigDecimal exchangeRate;
   
   public ExchangeResponse() {
   }

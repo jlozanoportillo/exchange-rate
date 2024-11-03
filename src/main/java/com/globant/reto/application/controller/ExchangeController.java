@@ -36,8 +36,10 @@ public class ExchangeController {
   public Mono<ResponseEntity<ExchangeResponse>> getExchangeMessage(
       @RequestBody ExchangeRequest request) {
     log.info("into getExchangeMessage. "+request.getOriginCurrency());
-    Single<ExchangeResponse> singleMessage = exchangeService.exchangeCurrency(request);
-    return RxJava2Adapter.singleToMono(singleMessage).map(res -> ResponseEntity.ok(res));
+    Single<ExchangeResponse> singleResponse = exchangeService.exchangeCurrency(request);
+    return RxJava2Adapter.singleToMono(singleResponse)
+        .map(ResponseEntity::ok)
+        .defaultIfEmpty(ResponseEntity.notFound().build());
   }
 
 }
