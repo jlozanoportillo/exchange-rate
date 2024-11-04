@@ -1,5 +1,6 @@
 package com.globant.reto.infrastructure.h2;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ public class ExchangeRateRepositoryh2 implements ExchangeRateRepository {
   private EntityManager entityManager;
 
   @Transactional
+  @Cacheable(value = "exchangeRates", key = "#sourceCurrency + '-' + #targetCurrency", cacheManager = "cacheManager")
   public Maybe<ExchangeRate> findExchangeRate(String sourceCurrency,
       String targetCurrency) {
     String query = "SELECT e FROM ExchangeRate e WHERE e.sourceCurrency = :sourceCurrency AND e.targetCurrency = :targetCurrency";

@@ -3,6 +3,7 @@ package com.globant.reto.application.services;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.globant.reto.application.dto.ExchangeRequest;
@@ -24,19 +25,25 @@ public class ExchangeService {
 
   public Single<ExchangeResponse> exchangeCurrency(ExchangeRequest request) {
     log.info("into exchangeCurrency.");
-    Maybe<ExchangeRate> singleMessage = exchangeRateRepository
-        .findExchangeRate(request.getSourceCurrency(), request.getTargetCurrency());
-
+    
+    Maybe<ExchangeRate> singleMessage = obtainRate(request);
     return singleMessage.subscribeOn(Schedulers.io())
         .map(i -> prepareResponse(i, request))
         .switchIfEmpty(Maybe.just(new ExchangeResponse())).toSingle();
   }
 
+
+  public Maybe<ExchangeRate> obtainRate(ExchangeRequest request) {
+    return exchangeRateRepository.findExchangeRate(request.getSourceCurrency(),
+        request.getTargetCurrency());
+  }
+
   private ExchangeResponse prepareResponse(ExchangeRate i, ExchangeRequest request) {
     ExchangeResponse response = new ExchangeResponse();
     BigDecimal rate = new BigDecimal(i.getRate());
-    BigDecimal convertAmount = new BigDecimal(request.getAmount().floatValue() * i.getRate());
-    
+    BigDecimal convertAmount = new BigDecimal(
+        request.getAmount().floatValue() * i.getRate());
+
     response.setSouceCurrency(i.getSourceCurrency());
     response.setTargetCurrency(i.getTargetCurrency());
     response.setExchangeRate(rate);
