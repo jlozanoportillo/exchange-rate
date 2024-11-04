@@ -12,3 +12,7 @@ EXPOSE 8081
 
 # Comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "exchange-rate.jar"]
+
+
+docker build -t exchange-rate .
+docker run -p 8081:8081 exchange-rate
