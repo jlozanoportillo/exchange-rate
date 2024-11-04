@@ -1,11 +1,11 @@
-package com.globant.reto.infrastructure.h2;
+package com.globant.reto.exchange.infrastructure.h2;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.globant.reto.domain.model.ExchangeRate;
-import com.globant.reto.domain.repository.ExchangeRateRepository;
+import com.globant.reto.exchange.domain.model.ExchangeRate;
+import com.globant.reto.exchange.domain.repository.ExchangeRateRepository;
 
 import io.reactivex.Maybe;
 import jakarta.persistence.EntityManager;

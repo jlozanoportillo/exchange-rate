@@ -1,4 +1,4 @@
-package com.globant.reto.application.services;
+package com.globant.reto.exchange.application.services;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.globant.reto.application.dto.ExchangeRequest;
-import com.globant.reto.application.dto.ExchangeResponse;
-import com.globant.reto.domain.error.ExchangeRateNotFoundException;
-import com.globant.reto.domain.error.InvalidCurrencyAmountException;
-import com.globant.reto.domain.model.ExchangeRate;
-import com.globant.reto.domain.repository.ExchangeRateRepository;
+import com.globant.reto.exchange.application.dto.ExchangeRequest;
+import com.globant.reto.exchange.application.dto.ExchangeResponse;
+import com.globant.reto.exchange.domain.error.ExchangeRateNotFoundException;
+import com.globant.reto.exchange.domain.error.InvalidCurrencyAmountException;
+import com.globant.reto.exchange.domain.model.ExchangeRate;
+import com.globant.reto.exchange.domain.repository.ExchangeRateRepository;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;

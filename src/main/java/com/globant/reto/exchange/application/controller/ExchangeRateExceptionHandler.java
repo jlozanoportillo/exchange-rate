@@ -1,13 +1,13 @@
-package com.globant.reto.application.controller;
+package com.globant.reto.exchange.application.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.globant.reto.application.dto.ExceptionReason;
-import com.globant.reto.domain.error.ExchangeRateNotFoundException;
-import com.globant.reto.domain.error.InvalidCurrencyAmountException;
+import com.globant.reto.exchange.application.dto.ExceptionReason;
+import com.globant.reto.exchange.domain.error.ExchangeRateNotFoundException;
+import com.globant.reto.exchange.domain.error.InvalidCurrencyAmountException;
 
 @ControllerAdvice
 public class ExchangeRateExceptionHandler {

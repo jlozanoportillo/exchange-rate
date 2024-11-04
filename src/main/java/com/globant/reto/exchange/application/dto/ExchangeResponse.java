@@ -1,4 +1,4 @@
-package com.globant.reto.application.dto;
+package com.globant.reto.exchange.application.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

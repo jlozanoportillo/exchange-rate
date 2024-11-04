@@ -1,6 +1,6 @@
-package com.globant.reto.domain.repository;
+package com.globant.reto.exchange.domain.repository;
 
-import com.globant.reto.domain.model.ExchangeRate;
+import com.globant.reto.exchange.domain.model.ExchangeRate;
 
 import io.reactivex.Maybe;
 

@@ -1,4 +1,4 @@
-package com.globant.reto.config;
+package com.globant.reto.exchange.config;
 
 import java.util.concurrent.TimeUnit;
 

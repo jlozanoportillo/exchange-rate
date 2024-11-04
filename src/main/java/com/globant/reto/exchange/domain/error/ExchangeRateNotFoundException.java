@@ -1,4 +1,4 @@
-package com.globant.reto.domain.error;
+package com.globant.reto.exchange.domain.error;
 
 public class ExchangeRateNotFoundException extends RuntimeException {
   public ExchangeRateNotFoundException(String message) {

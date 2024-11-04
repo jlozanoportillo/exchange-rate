@@ -1,4 +1,4 @@
-package com.globant.reto.application.controller;
+package com.globant.reto.exchange.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.globant.reto.application.dto.ExchangeRequest;
-import com.globant.reto.application.dto.ExchangeResponse;
-import com.globant.reto.application.services.ExchangeService;
+import com.globant.reto.exchange.application.dto.ExchangeRequest;
+import com.globant.reto.exchange.application.dto.ExchangeResponse;
+import com.globant.reto.exchange.application.services.ExchangeService;
 
 import io.reactivex.Single;
 import lombok.extern.slf4j.Slf4j;
