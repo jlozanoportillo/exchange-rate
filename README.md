@@ -19,3 +19,9 @@ Para construir el proyecto, sigue estos pasos:
    ```bash
    git clone https://github.com/jlozanoportillo/exchange-rate.git
    cd exchange-rate
+
+1. **Construye el proyecto con maven:**
+   ```mvn clean install
+
+
+
