@@ -2,7 +2,7 @@
 FROM openjdk:17-jdk-slim
 
 # Establece el directorio de trabajo
-VOLUME /tmp
+WORKDIR /app
 
 # Copia el archivo JAR de tu proyecto al contenedor
 COPY target/exchange-rate-0.0.1-SNAPSHOT.jar exchange-rate.jar
