@@ -28,20 +28,20 @@ public class ExchangeService {
         .findExchangeRate(request.getSourceCurrency(), request.getTargetCurrency());
 
     return singleMessage.subscribeOn(Schedulers.io())
-
-        .map(i -> {
-          ExchangeResponse response = new ExchangeResponse();
-          response.setSouceCurrency(i.getSourceCurrency());
-          response.setTargetCurrency(i.getTargetCurrency());
-          BigDecimal s = new BigDecimal(i.getRate());
-          response.setExchangeRate(s);
-          response.setInitialAmount(request.getAmount());
-          response.setConvertAmount(
-              new BigDecimal(request.getAmount().floatValue() * i.getRate()));
-          return response;
-        })
-        .switchIfEmpty(Maybe.just(new ExchangeResponse()))
-        .toSingle();
+        .map(i -> prepareResponse(i, request))
+        .switchIfEmpty(Maybe.just(new ExchangeResponse())).toSingle();
   }
 
+  private ExchangeResponse prepareResponse(ExchangeRate i, ExchangeRequest request) {
+    ExchangeResponse response = new ExchangeResponse();
+    BigDecimal rate = new BigDecimal(i.getRate());
+    BigDecimal convertAmount = new BigDecimal(request.getAmount().floatValue() * i.getRate());
+    
+    response.setSouceCurrency(i.getSourceCurrency());
+    response.setTargetCurrency(i.getTargetCurrency());
+    response.setExchangeRate(rate);
+    response.setInitialAmount(request.getAmount());
+    response.setConvertAmount(convertAmount);
+    return response;
+  }
 }
