@@ -38,7 +38,7 @@ Ahora puedes acceder a la aplicación y sus endpoints a través de Postman o cua
 
 > **Health Check**
 Puedes verificar que la aplicación esté funcionando correctamente accediendo a:
-   http://localhost:8081/exchange/health
+   *http://localhost:8081/exchange/health*
    
    
    
