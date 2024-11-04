@@ -13,7 +13,7 @@ import jakarta.persistence.PersistenceContext;
 public class UserRepositoryH2 implements UserRepository{
 
   @PersistenceContext
-  private EntityManager entityManager;
+  protected EntityManager entityManager;
 
   public User findByUsername(String username) {
     String query = "SELECT e FROM User e WHERE e.username = :username";
