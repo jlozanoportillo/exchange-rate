@@ -1,7 +1,5 @@
 package com.globant.reto.application.dto;
 
-import java.math.BigDecimal;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
@@ -12,7 +10,7 @@ import lombok.Setter;
 public class ExchangeRequest {
   
   @JsonProperty("amount")
-  private BigDecimal amount;
+  private Double amount;
   
   @JsonProperty("sourceCurrency")
   private String sourceCurrency;

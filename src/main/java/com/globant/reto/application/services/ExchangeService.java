@@ -1,6 +1,7 @@
 package com.globant.reto.application.services;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.globant.reto.application.dto.ExchangeRequest;
 import com.globant.reto.application.dto.ExchangeResponse;
+import com.globant.reto.domain.error.ExchangeRateNotFoundException;
+import com.globant.reto.domain.error.InvalidCurrencyAmountException;
 import com.globant.reto.domain.model.ExchangeRate;
 import com.globant.reto.domain.repository.ExchangeRateRepository;
 
@@ -25,13 +28,21 @@ public class ExchangeService {
 
   public Single<ExchangeResponse> exchangeCurrency(ExchangeRequest request) {
     log.info("into exchangeCurrency.");
-    
-    Maybe<ExchangeRate> singleMessage = obtainRate(request);
-    return singleMessage.subscribeOn(Schedulers.io())
-        .map(i -> prepareResponse(i, request))
-        .switchIfEmpty(Maybe.just(new ExchangeResponse())).toSingle();
-  }
 
+    return Single.just(request).flatMap(req -> {
+      if (req.getAmount() == null || req.getAmount() <= 0) {
+        return Single.error(new InvalidCurrencyAmountException("Initial Amount invalid"));
+      }
+      return obtainRate(request)
+          .subscribeOn(Schedulers.io())
+          .map(i -> prepareResponse(i, request))
+          .switchIfEmpty(Maybe.error(
+              new ExchangeRateNotFoundException("No exchange rate found for currencies: "
+                  + request.getSourceCurrency() + " to " + request.getTargetCurrency())))
+          .toSingle();
+    });
+
+  }
 
   public Maybe<ExchangeRate> obtainRate(ExchangeRequest request) {
     return exchangeRateRepository.findExchangeRate(request.getSourceCurrency(),
@@ -40,13 +51,12 @@ public class ExchangeService {
 
   private ExchangeResponse prepareResponse(ExchangeRate i, ExchangeRequest request) {
     ExchangeResponse response = new ExchangeResponse();
-    BigDecimal rate = new BigDecimal(i.getRate());
-    BigDecimal convertAmount = new BigDecimal(
-        request.getAmount().floatValue() * i.getRate());
+    BigDecimal rate = new BigDecimal(i.getRate()).setScale(4, RoundingMode.HALF_UP);
+    Double convertAmount = request.getAmount() * i.getRate();
 
     response.setSouceCurrency(i.getSourceCurrency());
     response.setTargetCurrency(i.getTargetCurrency());
-    response.setExchangeRate(rate);
+    response.setExchangeRate(i.getRate());
     response.setInitialAmount(request.getAmount());
     response.setConvertAmount(convertAmount);
     return response;

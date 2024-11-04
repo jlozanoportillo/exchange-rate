@@ -1,10 +1,6 @@
 package com.globant.reto.application.dto;
 
-import java.math.BigDecimal;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,10 +12,10 @@ import lombok.Setter;
 public class ExchangeResponse {
 
   @JsonProperty("initialAmount")
-  private BigDecimal initialAmount;
+  private Double initialAmount;
   
   @JsonProperty("convertAmount")
-  private BigDecimal convertAmount;
+  private Double convertAmount;
   
   @JsonProperty("souceCurrency")
   private String souceCurrency;
@@ -28,7 +24,7 @@ public class ExchangeResponse {
   private String targetCurrency;
   
   @JsonProperty("exchangeRate")
-  private BigDecimal exchangeRate;
+  private Double exchangeRate;
   
   public ExchangeResponse() {
   }
