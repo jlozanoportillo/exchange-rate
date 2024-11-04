@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.globant.reto.domain.error.UsernameNotFoundException;
 import com.globant.reto.domain.model.User;
-import com.globant.reto.domain.repository.UserRepository;
+import com.globant.reto.security.domain.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService{

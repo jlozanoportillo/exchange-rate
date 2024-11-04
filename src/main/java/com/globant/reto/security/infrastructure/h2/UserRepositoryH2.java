@@ -1,9 +1,9 @@
-package com.globant.reto.infrastructure.h2;
+package com.globant.reto.security.infrastructure.h2;
 
 import org.springframework.stereotype.Repository;
 
 import com.globant.reto.domain.model.User;
-import com.globant.reto.domain.repository.UserRepository;
+import com.globant.reto.security.domain.repository.UserRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;

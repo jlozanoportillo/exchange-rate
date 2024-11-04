@@ -1,4 +1,4 @@
-package com.globant.reto.domain.repository;
+package com.globant.reto.security.domain.repository;
 
 import com.globant.reto.domain.model.User;
 

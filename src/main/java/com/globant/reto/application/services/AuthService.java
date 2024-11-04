@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.globant.reto.application.dto.LoginRequest;
 import com.globant.reto.config.JwtUtil;
 import com.globant.reto.domain.model.User;
-import com.globant.reto.domain.repository.UserRepository;
+import com.globant.reto.security.domain.repository.UserRepository;
 
 @Service
 public class AuthService {
