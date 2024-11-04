@@ -37,8 +37,9 @@ Para construir el proyecto, sigue estos pasos:
 Ahora puedes acceder a la aplicación y sus endpoints a través de Postman o cualquier otro cliente HTTP.
 
 > **Health Check**
+Puedes verificar que la aplicación esté funcionando correctamente accediendo a:
    ```bash
-   docker run -p 8082:8081 exchange-rate-app
+   http://localhost:8081/exchange/health
    
    
    
