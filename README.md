@@ -31,3 +31,14 @@ Para construir el proyecto, sigue estos pasos:
 4. **Ejecutar el contenedor de Docker:**
    ```bash
    docker run -p 8082:8081 exchange-rate-app
+
+
+5. **Acceder a la aplicación:**
+Ahora puedes acceder a la aplicación y sus endpoints a través de Postman o cualquier otro cliente HTTP.
+
+**Health Check**
+   ```bash
+   docker run -p 8082:8081 exchange-rate-app
+   
+   
+   
