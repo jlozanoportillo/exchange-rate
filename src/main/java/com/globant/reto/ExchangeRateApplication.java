@@ -1,4 +1,4 @@
-package com.globant.reto.exchange;
+package com.globant.reto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

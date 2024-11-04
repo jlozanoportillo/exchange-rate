@@ -30,7 +30,7 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.csrf().disable().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-        .requestMatchers("/api/auth/**", "/exchange/health","/h2-console").permitAll().anyRequest()
+        .requestMatchers("/api/auth/**", "/v1/exchange-rates/health","/h2-console").permitAll().anyRequest()
         .authenticated().and()
 
         .addFilterBefore(jwtAuthenticationFilter(http),
