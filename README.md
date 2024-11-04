@@ -20,9 +20,14 @@ Para construir el proyecto, sigue estos pasos:
    git clone https://github.com/jlozanoportillo/exchange-rate.git
    cd exchange-rate
 
-1. **Construye el proyecto con maven:**
+2. **Construye el proyecto con maven:**
    ```bash
    mvn clean install
 
+3. **Crear la imagen de Docker:**
+   ```bash
+   docker build -t exchange-rate-app .
 
-
+4. **Ejecutar el contenedor de Docker:**
+   ```bash
+   docker run -p 8082:8081 exchange-rate-app
