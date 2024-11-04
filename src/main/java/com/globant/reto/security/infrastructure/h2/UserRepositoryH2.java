@@ -2,7 +2,7 @@ package com.globant.reto.security.infrastructure.h2;
 
 import org.springframework.stereotype.Repository;
 
-import com.globant.reto.domain.model.User;
+import com.globant.reto.security.domain.model.User;
 import com.globant.reto.security.domain.repository.UserRepository;
 
 import jakarta.persistence.EntityManager;

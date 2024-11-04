@@ -1,4 +1,4 @@
-package com.globant.reto.application.controller;
+package com.globant.reto.security.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.globant.reto.application.dto.LoginRequest;
-import com.globant.reto.application.dto.LoginResponse;
-import com.globant.reto.application.services.AuthService;
+import com.globant.reto.security.application.dto.LoginRequest;
+import com.globant.reto.security.application.dto.LoginResponse;
+import com.globant.reto.security.config.services.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")

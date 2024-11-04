@@ -1,6 +1,6 @@
 package com.globant.reto.security.domain.repository;
 
-import com.globant.reto.domain.model.User;
+import com.globant.reto.security.domain.model.User;
 
 public interface UserRepository {
   

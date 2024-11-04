@@ -1,4 +1,4 @@
-package com.globant.reto.application.services;
+package com.globant.reto.security.config.services;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import com.globant.reto.domain.error.UsernameNotFoundException;
-import com.globant.reto.domain.model.User;
+import com.globant.reto.security.domain.error.UsernameNotFoundException;
+import com.globant.reto.security.domain.model.User;
 import com.globant.reto.security.domain.repository.UserRepository;
 
 @Service

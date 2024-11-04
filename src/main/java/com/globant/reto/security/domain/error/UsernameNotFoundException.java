@@ -1,4 +1,4 @@
-package com.globant.reto.domain.error;
+package com.globant.reto.security.domain.error;
 
 public class UsernameNotFoundException extends RuntimeException {
   

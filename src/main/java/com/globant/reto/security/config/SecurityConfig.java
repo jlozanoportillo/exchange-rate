@@ -1,4 +1,4 @@
-package com.globant.reto.config;
+package com.globant.reto.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.globant.reto.application.services.CustomUserDetailsService;
+import com.globant.reto.security.config.services.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity

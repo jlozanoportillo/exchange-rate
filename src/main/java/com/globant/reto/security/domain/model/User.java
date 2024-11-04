@@ -1,4 +1,4 @@
-package com.globant.reto.domain.model;
+package com.globant.reto.security.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

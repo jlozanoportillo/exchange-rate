@@ -1,4 +1,4 @@
-package com.globant.reto.config;
+package com.globant.reto.security.config;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.GenericFilterBean;
 
-import com.globant.reto.application.services.CustomUserDetailsService;
+import com.globant.reto.security.config.services.CustomUserDetailsService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

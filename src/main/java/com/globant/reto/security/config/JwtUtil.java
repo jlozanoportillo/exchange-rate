@@ -1,4 +1,4 @@
-package com.globant.reto.config;
+package com.globant.reto.security.config;
 
 import java.util.Base64;
 import java.util.Date;
