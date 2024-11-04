@@ -35,7 +35,7 @@ public class ExchangeController {
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public Mono<ResponseEntity<ExchangeResponse>> getExchangeMessage(
       @RequestBody ExchangeRequest request) {
-    log.info("into getExchangeMessage. "+request.getOriginCurrency());
+    log.info("into getExchangeMessage. ");
     Single<ExchangeResponse> singleResponse = exchangeService.exchangeCurrency(request);
     return RxJava2Adapter.singleToMono(singleResponse)
         .map(ResponseEntity::ok)

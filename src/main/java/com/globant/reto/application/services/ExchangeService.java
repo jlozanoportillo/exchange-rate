@@ -10,6 +10,7 @@ import com.globant.reto.application.dto.ExchangeResponse;
 import com.globant.reto.domain.model.ExchangeRate;
 import com.globant.reto.domain.repository.ExchangeRateRepository;
 
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import lombok.extern.slf4j.Slf4j;
@@ -23,14 +24,11 @@ public class ExchangeService {
 
   public Single<ExchangeResponse> exchangeCurrency(ExchangeRequest request) {
     log.info("into exchangeCurrency.");
-    Single<ExchangeRate> singleMessage = Single.just(
-        exchangeRateRepository.findExchangeRate(
-            request.getOriginCurrency(), 
-            request.getTargetCurrency())
-        );
-    
-    return singleMessage
-        .subscribeOn(Schedulers.io())
+    Maybe<ExchangeRate> singleMessage = exchangeRateRepository
+        .findExchangeRate(request.getSourceCurrency(), request.getTargetCurrency());
+
+    return singleMessage.subscribeOn(Schedulers.io())
+
         .map(i -> {
           ExchangeResponse response = new ExchangeResponse();
           response.setSouceCurrency(i.getSourceCurrency());
@@ -38,9 +36,12 @@ public class ExchangeService {
           BigDecimal s = new BigDecimal(i.getRate());
           response.setExchangeRate(s);
           response.setInitialAmount(request.getAmount());
-          response.setConvertAmount(new BigDecimal(request.getAmount().floatValue()*i.getRate())) ;
+          response.setConvertAmount(
+              new BigDecimal(request.getAmount().floatValue() * i.getRate()));
           return response;
-        });
+        })
+        .switchIfEmpty(Maybe.just(new ExchangeResponse()))
+        .toSingle();
   }
 
 }

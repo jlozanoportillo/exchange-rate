@@ -14,8 +14,8 @@ public class ExchangeRequest {
   @JsonProperty("amount")
   private BigDecimal amount;
   
-  @JsonProperty("originCurrency")
-  private String originCurrency;
+  @JsonProperty("sourceCurrency")
+  private String sourceCurrency;
   
   @JsonProperty("targetCurrency")
   private String targetCurrency;
