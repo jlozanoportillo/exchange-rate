@@ -4,5 +4,5 @@ INSERT INTO exchange_rate (source_currency, target_currency, rate) VALUES ('EUR'
 
 
 
-
+INSERT INTO users (username, password) VALUES ('admin', 'admin');
 

@@ -20,7 +20,7 @@ import reactor.adapter.rxjava.RxJava2Adapter;
 import reactor.core.publisher.Mono;
 
 @RestController()
-@RequestMapping("exchange")
+@RequestMapping("/exchange")
 @Slf4j
 public class ExchangeController {
 
