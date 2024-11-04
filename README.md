@@ -21,7 +21,8 @@ Para construir el proyecto, sigue estos pasos:
    cd exchange-rate
 
 1. **Construye el proyecto con maven:**
-   ```mvn clean install
+   ```bash
+   mvn clean install
 
 
 
