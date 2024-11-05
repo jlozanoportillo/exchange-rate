@@ -2,7 +2,7 @@ name: Deploy to Google Cloud Run
 
 on:
   workflow_run:
-    workflows: ["Build and Test"]
+    workflows: ["Java CI with Maven"]
     types:
       - completed
 
