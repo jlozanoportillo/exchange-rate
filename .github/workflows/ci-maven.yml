@@ -60,10 +60,10 @@ jobs:
 #
 
     - name: Build Docker image
-      run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/my-image:latest .
+      run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:latest .
     
     - name: Push Docker image to Artifact Registry
-      run: docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/my-image:latest
+      run: docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:latest
 
 
 
