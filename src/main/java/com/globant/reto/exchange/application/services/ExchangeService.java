@@ -1,10 +1,6 @@
 package com.globant.reto.exchange.application.services;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.globant.reto.exchange.application.dto.ExchangeRequest;
@@ -51,7 +47,6 @@ public class ExchangeService {
 
   private ExchangeResponse prepareResponse(ExchangeRate i, ExchangeRequest request) {
     ExchangeResponse response = new ExchangeResponse();
-    BigDecimal rate = new BigDecimal(i.getRate()).setScale(4, RoundingMode.HALF_UP);
     Double convertAmount = request.getAmount() * i.getRate();
 
     response.setSouceCurrency(i.getSourceCurrency());
