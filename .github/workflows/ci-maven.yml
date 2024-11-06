@@ -50,15 +50,20 @@ jobs:
         export_default_credentials: true
 
 
- 
+# 
+#    - name: Build Docker image
+#      run: docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/exchange-rate:${{ github.sha }} .
+#
+#
+#    - name: Push Docker image
+#      run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/exchange-rate:${{ github.sha }}
+#
+
     - name: Build Docker image
-      run: docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/exchange-rate:${{ github.sha }} .
-
-
-    - name: Push Docker image
-      run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/exchange-rate:${{ github.sha }}
-
-
+      run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/my-image:latest .
+    
+    - name: Push Docker image to Artifact Registry
+      run: docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/my-image:latest
 
 
 
