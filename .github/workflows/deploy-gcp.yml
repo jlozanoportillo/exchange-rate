@@ -12,14 +12,14 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
-      - name: List target directory
-        run: ls -la
-      
       - name: Download artifact
-        uses: actions/download-artifact@v3  # Actualizado a la versión 3
+        uses: actions/download-artifact@v3
         with:
-          name: exchange-rate.jar
-          path: ./target
+          name: target  # Asegúrate de que coincide con el nombre del artefacto subido
+          path: ./target  # Carpeta destino para la descarga
+
+      - name: List target directory after download
+        run: ls -la ./target  # Verifica que el artefacto esté presente
 
 #      - name: Configure Google Cloud CLI
 #        uses: google-github-actions/setup-gcloud@v2
