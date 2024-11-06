@@ -55,6 +55,16 @@ jobs:
       run: docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/exchange-rate:${{ github.sha }} .
 
 
+    - name: Push Docker image
+      run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/exchange-rate:${{ github.sha }}
 
 
-        
+
+
+
+
+
+
+
+
+ 
