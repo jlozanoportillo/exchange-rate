@@ -58,6 +58,8 @@ jobs:
 #    - name: Push Docker image
 #      run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/exchange-rate:${{ github.sha }}
 #
+    - name: Print Docker image tag
+      run: echo "us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:latest"
 
     - name: Build Docker image
       run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:latest .
