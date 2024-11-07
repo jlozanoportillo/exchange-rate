@@ -30,6 +30,12 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Extract version from pom.xml
+      id: extract_version
+      run: |
+        VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
       # Autenticación con Google Cloud
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
@@ -42,9 +48,6 @@ jobs:
         name: target
         path: target/
 
-    - name: List target directory after download
-      run: ls -la ./target  # Verifica que el artefacto esté presente
-
     - name: Configure Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v2
       with:
@@ -56,10 +59,10 @@ jobs:
       run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
       
     - name: Build Docker image
-      run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:0.0.1 .
+      run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:${{ env.VERSION }} .
     
     - name: Push Docker image to Artifact Registry
-      run: docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:0.0.1
+      run: docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:${{ env.VERSION }}
 
 
 
