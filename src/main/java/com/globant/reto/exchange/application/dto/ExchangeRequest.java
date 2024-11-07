@@ -18,4 +18,7 @@ public class ExchangeRequest {
   @JsonProperty("targetCurrency")
   private String targetCurrency;
   
+  @JsonProperty("couponKey")
+  private String couponKey;
+  
 }

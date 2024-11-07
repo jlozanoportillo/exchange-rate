@@ -25,6 +25,10 @@ public class ExchangeResponse {
   
   @JsonProperty("exchangeRate")
   private Double exchangeRate;
+
+  @JsonProperty("additionalRate")
+  private Double additionalRate;
+  
   
   public ExchangeResponse() {
   }

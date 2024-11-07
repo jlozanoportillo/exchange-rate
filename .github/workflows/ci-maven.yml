@@ -52,6 +52,9 @@ jobs:
 #        service_account_key: ${{ secrets.GCP_SA_KEY }}
 #        export_default_credentials: true
 
+    - name: "Docker auth"
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+      
     - name: Build Docker image
       run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:0.0.1 .
     
