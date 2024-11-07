@@ -65,7 +65,13 @@ jobs:
       run: docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:${{ env.VERSION }}
 
 
-
+    - name: Deploy to Cloud Run
+      run: |
+        gcloud run deploy exchange-rate \
+          --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:${{ env.VERSION }} \
+          --platform managed \
+          --region us-central1 \
+          --allow-unauthenticated
 
 
 
