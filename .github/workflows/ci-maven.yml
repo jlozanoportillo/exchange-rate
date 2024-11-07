@@ -71,7 +71,8 @@ jobs:
           --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/mibanco/exchange-rate:${{ env.VERSION }} \
           --platform managed \
           --region us-central1 \
-          --allow-unauthenticated
+          --allow-unauthenticated \
+          --port 8081
 
 
 
