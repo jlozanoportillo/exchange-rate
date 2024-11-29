@@ -1,6 +1,5 @@
 package com.globant.reto.exchange.infrastructure.h2;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

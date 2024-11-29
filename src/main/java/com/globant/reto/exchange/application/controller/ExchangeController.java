@@ -1,7 +1,8 @@
 package com.globant.reto.exchange.application.controller;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +30,21 @@ public class ExchangeController {
 
   @GetMapping(value = "/health")
   public String sayHello() {
-    return "I am Live";
+    String[] strings = {
+        "Ronald pisado", 
+        "Ronald poco hombre", 
+        "Ronald misio", 
+        "Ronald duro", 
+        "Moto de Jean"};
+    Random random = new Random();
+    int randomIndex = random.nextInt(strings.length);
+    return strings[randomIndex];
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public Mono<ResponseEntity<ExchangeResponse>> getExchangeRate(
       @RequestBody ExchangeRequest request) {
-    log.info("into getExchangeRate. ");
+    log.info("into getExchangeRate.");
     Single<ExchangeResponse> singleResponse = exchangeService.exchangeCurrency(request);
     return RxJava2Adapter.singleToMono(singleResponse)
         .map(ResponseEntity::ok)

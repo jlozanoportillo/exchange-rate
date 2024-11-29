@@ -28,17 +28,19 @@ public class ExchangeService {
     Maybe<Coupon> coupon = exchangeRateRepository.findCoupon(request.getCouponKey(),
         request);
     return Single.just(request).flatMap(req -> {
+
       if (req.getAmount() == null || req.getAmount() <= 0) {
         return Single.error(new InvalidCurrencyAmountException("Initial Amount invalid"));
       }
-      return obtainRate(request).subscribeOn(Schedulers.io())
+      return obtainRate(request)
+          .subscribeOn(Schedulers.io())
           .switchIfEmpty(Maybe.error(
               new ExchangeRateNotFoundException("No exchange rate found for currencies: "
                   + request.getSourceCurrency() + " to " + request.getTargetCurrency())))
           .flatMap(resp -> {
-            return coupon.map(coup -> clone(resp, coup))
-                .switchIfEmpty(Maybe.just(resp));
-          }).map(res -> prepareResponse(res, request)).toSingle();
+            return coupon.map(coup -> clone(resp, coup)).switchIfEmpty(Maybe.just(resp));
+          })
+          .map(res -> prepareResponse(res, request)).toSingle();
     });
 
   }

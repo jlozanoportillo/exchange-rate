@@ -1,5 +1,6 @@
 package com.globant.reto.exchange.application.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,13 +14,9 @@ import org.springframework.http.ResponseEntity;
 import com.globant.reto.exchange.application.dto.ExchangeRequest;
 import com.globant.reto.exchange.application.dto.ExchangeResponse;
 import com.globant.reto.exchange.application.services.ExchangeService;
-import com.globant.reto.exchange.domain.error.ExchangeRateNotFoundException;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 import reactor.core.publisher.Mono;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 
 public class ExchangeControllerTest {
 
