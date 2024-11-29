@@ -35,7 +35,10 @@ public class ExchangeController {
         "Ronald poco hombre", 
         "Ronald misio", 
         "Ronald duro", 
-        "Moto de Jean"};
+        "Moto de Jean",
+        "Alonso jubilado",
+        "Tello hambre",
+        "Ronald hambre"};
     Random random = new Random();
     int randomIndex = random.nextInt(strings.length);
     return strings[randomIndex];
