@@ -41,7 +41,8 @@ public class ExchangeController {
         "Ronald hambre"};
     Random random = new Random();
     int randomIndex = random.nextInt(strings.length);
-    return strings[randomIndex];
+    String elegido =strings[randomIndex];
+    return "<br><br><h1 style=\"text-align: center;\">"+elegido+"</h1>";
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
