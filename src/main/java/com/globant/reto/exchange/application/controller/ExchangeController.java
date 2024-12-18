@@ -31,18 +31,17 @@ public class ExchangeController {
   @GetMapping(value = "/health")
   public String sayHello() {
     String[] strings = {
-        "Ronald pisado", 
-        "Ronald poco hombre", 
-        "Ronald misio", 
-        "Ronald duro", 
-        "Moto de Jean",
-        "Alonso jubilado",
-        "Tello hambre",
-        "Ronald hambre"};
+        "Tigre dice: FELIZ NAVIDAD!", 
+        "Tigre dice: MERRY CHRISTMAS!", 
+        "Tigre dice: Buon Natale!", 
+        "Tigre dice: Feliz Natal!", 
+        "Tigre dice: Happy New Year!",
+        "Tigre dice: Buon anno!",
+        "Tigre dice: Feliz Año!"};
     Random random = new Random();
     int randomIndex = random.nextInt(strings.length);
     String elegido =strings[randomIndex];
-    return "<br><br><h1 style=\"text-align: center;\">"+elegido+"</h1>";
+    return "<br><br><h1 style=\"text-align: center; white-space: nowrap; animation: move 3s linear infinite;\">"+elegido+"</h1>";
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
